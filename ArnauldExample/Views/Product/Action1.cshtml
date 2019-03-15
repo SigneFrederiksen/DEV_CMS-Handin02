@@ -1,0 +1,35 @@
+﻿@model System.Globalization.CultureInfo[]
+
+@{
+    ViewBag.Title = "Action1";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{ 
+    var listitems = Model.Select(c => new SelectListItem() { Text = c.EnglishName });
+}
+
+@*{ 
+    var cultures = ViewBag.Languageslist as System.Globalization.CultureInfo[];
+    var listitems = cultures.Select(c => new SelectListItem() { Text = c.EnglishName });
+}*@
+
+
+<h2>Available languages</h2>
+
+@*<ul>
+        @foreach (var language in ViewBag.Languageslist)
+        {
+            <li>@language.EnglishName</li>
+        }
+    </ul>*@
+
+<div class="row">
+    <div class="col-xs-6">
+        @Html.ListBox("lang", listitems)
+    </div>
+    <div class="col-xs-6">
+        @Html.DropDownList("lang2", listitems)
+    </div>
+</div>
+
